@@ -1,6 +1,6 @@
 # next-markdown-template
 
-This is a customized implementation of markdown renderer utilizing remark plugins, rehype plugins and pyodide in nextjs framework. This repository is a replica of a peer repo [`react-markdown-template`](https://github.com/siraisisatoru/react-markdown-template) while transferring the framework and language from javascript to typescript casued dramatic performance improvement.
+This is a customized implementation of markdown renderer utilizing remark plugins, rehype plugins and pyodide in nextjs framework. This repository is a replica of a peer repo [`react-markdown-template`](https://github.com/siraisisatoru/react-markdown-template) while transferring the framework and language from javascript to typescript caused dramatic performance improvement.
 
 # Purpose of this template
 
@@ -27,7 +27,16 @@ This project was built on Vite and Reactjs. The page was decorated with Tailwind
 
 ## Rendering
 
-... list out the renderers (update in progress)
+-   ✅ General Markdown
+-   ✅ Ketax math render
+-   ✅ GitHub Flavored Markdown (GFM) render
+-   ✅ p5 script render
+-   ✅ Code syntax highlighting
+-   ✅ Code execution result render (output only)
+    -   ✅ Python (Pyodide client worker)
+    -   ✅ CPP
+-   ✅ React-kawaii character render
+-   ✅ Image gallery render
 
 ## Advanced feature
 
@@ -64,7 +73,7 @@ This template aimed to build an automatically constructed wiki-liked react app. 
 
 ## CPP code block
 
-The implementation of CPP worker (`src/utils/cpp_worker`) was adopted from [https://github.com/InfiniteXyy/playcode](https://github.com/InfiniteXyy/playcode).
+The implementation of CPP worker (`components/utils/workers/cpp_worker`) and (`public/cpp_worker`) was adopted from [https://github.com/InfiniteXyy/playcode](https://github.com/InfiniteXyy/playcode).
 
 ## Markdown template
 
