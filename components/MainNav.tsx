@@ -33,7 +33,7 @@ const MainNav = async () => {
                         <ul className="menu pt-8 p-4 w-[18rem] sm:w-80 gap-4  min-h-full bg-base-200 text-base-content">
                             {/* Sidebar content here */}
                             <CloseDrawerLink
-                                className="btn btn-ghost gap-1 sm:gap-4 hover:bg-transparent text-lg sm:text-xl"
+                                className="btn btn-ghost gap-1 sm:gap-4 hover:bg-transparent text-lg sm:text-xl h-fit"
                                 href="/">
                                 <Image
                                     src="/img/logo.svg"
@@ -75,7 +75,7 @@ const MainNav = async () => {
             </div>
             <div className="flex flex-1">
                 <Link
-                    className="btn btn-ghost gap-4 hover:bg-transparent text-lg sm:text-xl"
+                    className="btn btn-ghost gap-4 hover:bg-transparent text-lg sm:text-xl max-w-full text-wrap flex-nowrap h-fit"
                     href="/">
                     <Image
                         src="/img/logo.svg"
@@ -91,7 +91,7 @@ const MainNav = async () => {
             </div>
 
             <div className="flex-none">
-                <SearchBar searchList= {searchList}/>
+                <SearchBar searchList={searchList}/>
 
                 <div className="dropdown dropdown-hover dropdown-end">
                     <div
