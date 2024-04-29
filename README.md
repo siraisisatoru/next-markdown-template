@@ -12,7 +12,13 @@ This project was built on Vite and Reactjs. The page was decorated with Tailwind
 
 # Live Demo
 
-🚧 A live demo hasn't been set up yet. Will be updated soon.
+The under-developing demo is hosted on Google Firebase and can be accessed here [https://next-markdown-demo.vercel.app/](https://next-markdown-demo.vercel.app/)
+
+-   [x] Frontpage [https://next-markdown-demo.vercel.app/](https://next-markdown-demo.vercel.app/)
+-   [x] Markdown render samples [https://next-markdown-demo.vercel.app/Website%20page/Cheatsheet](https://next-markdown-demo.vercel.app/Website%20page/Cheatsheet)
+-   [x] Page from markdown files
+    -   [https://next-markdown-demo.vercel.app/coding_notes/algorithm_c](https://next-markdown-demo.vercel.app/coding_notes/algorithm_c)
+    -   [https://next-markdown-demo.vercel.app/coding_notes/python_tutorials/python](https://next-markdown-demo.vercel.app/coding_notes/python_tutorials/python)
 
 # Supported features
 
@@ -97,17 +103,45 @@ other texts
 other text
 ```
 
-## Configure search contents
-
-(update in progress)
-
 # Render results
 
 (update in progress)
 
 # Usage
 
+## CREATE LOCAL ENV FILE
+
+Before use, create the env file for customized routing.
+
+Create `.env.local` file in the root directory.
+
+```md
+.
+├── app
+├── components
+├── Notes
+├── public
+├── .env.local <--
+...
+```
+
+Template for `.env.local`:
+
+```env
+# parameters for seraching
+EXCLUDEDFILES_SEARCH = ["markdownCheatsheet.md","ch1.md"]
+EXCLUDEDDIRECTORIES_SEARCH = []
+
+# parameters for site listing
+EXCLUDEDFILES = []
+EXCLUDEDDIRECTORIES = []
+MDFOLDER = "Notes"
+```
+
 ## Build local server
+
+> [!IMPORTANT]
+> Remember create `.env.local` file!
 
 ```sh
 git clone https://github.com/siraisisatoru/next-markdown-template.git
@@ -118,9 +152,30 @@ npm run dev
 
 Access the demo via link [http://localhost:3000/Website%20page/Cheatsheet](http://localhost:3000/Website%20page/Cheatsheet)
 
-## Deploy to Firebase
+## Deploy to Vercel hobby plan
 
-(update in progress)
+> [!IMPORTANT]
+> Remember create `.env.local` file!
+
+1. Link your GitHub account to Vercel
+2. Chose your repository to deploy
+3. Configure build command and environment parameters
+4. Build and deploy!
+
+Once you create your project in Vercel, go to `Settings` -> `General` -> `Install Command` and choose `Override` by `npm i --legacy-peer-deps`.
+
+You will also need to go to `Settings` -> `Environment Variables` -> `Import` under `Create new` -> find your `.env.local` file and `Open`. Note that `env` file can be hidden on your OS. You can see those file use `command+shift+,` on MacOS.
+
+## Deploy to Google Firebase
+
+> [!IMPORTANT]
+> Remember create `.env.local` file!
+
+Apparently, you can deploy NextJs project on Firebase while it needed in Blaze plan. The system is in the experiment stage and unstable to deploy (I was unable to deploy since two days ago)
+
+More information can be found here: https://firebase.google.com/docs/hosting/frameworks/nextjs
+
+Be aware your deployment may easily over the storage bandwidth per day in the free tier.
 
 # Contributing
 
