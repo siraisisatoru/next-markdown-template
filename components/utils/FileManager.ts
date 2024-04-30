@@ -27,6 +27,10 @@ export interface SearchItem {
     content: string;
 }
 
+const safeJSONParse = (param: string | undefined): string[] | [] => {
+    return param ? JSON.parse(param) : [];
+};
+
 export const getFileList = (): string[] => {
     if (!process.env.MDFOLDER) {
         return [];
@@ -40,6 +44,30 @@ export const getFileList = (): string[] => {
         .filter((fileName) => fileName.endsWith(".md"))
         .sort(); // Filter only markdown files
     return markdownFiles;
+};
+
+const getNoRouteList = (): string[] => {
+    const fileNames = getFileList();
+
+    const excludedFiles = safeJSONParse(process.env.EXCLUDEDFILES);
+    const excludedDirectories = safeJSONParse(process.env.EXCLUDEDDIRECTORIES);
+
+    return fileNames.filter(
+        (filePath) =>
+            !excludedFiles.some((excluded) => filePath.endsWith(excluded)) &&
+            excludedDirectories.every((dir) => !filePath.includes(`/${dir}/`))
+    );
+};
+
+const getNoSearchList = (): string[] => {
+    const fileNames = getNoRouteList();
+    const excludedFiles = safeJSONParse(process.env.EXCLUDEDFILES_SEARCH);
+    const excludedDirectories = safeJSONParse(process.env.EXCLUDEDDIRECTORIES_SEARCH);
+    return fileNames.filter(
+        (filePath) =>
+            !excludedFiles.some((excluded) => filePath.endsWith(excluded)) &&
+            excludedDirectories.every((dir) => !filePath.includes(`/${dir}/`))
+    );
 };
 
 const addElement = (
@@ -77,31 +105,18 @@ const addElement = (
 const extractInfo = (filePath: string) => {
     const parts = filePath.split("/");
     const directories = parts.slice(0, parts.length - 1);
-    // const directories = parts;
     const filename = parts[parts.length - 1].split(".")[0];
     const slug = getSlug(filePath);
     const url = parts.map((segment) => decodeURIComponent(segment.replace(".md", ""))).join("/"); // path to the page
 
-    // console.log(url);
-
     const yamlConfig = getMdYaml(getPost({ params: { slug } }));
 
     return { directories, filename, url, yamlConfig };
-    // return { directories, filename, url };
 };
 
 export const getFinishGroupedFiles = (): Record<string, Directory> => {
-    const fileNames = getFileList();
-
-    const safeJSONParse = (param: string | undefined): string[] | [] => {
-        return param ? JSON.parse(param) : [];
-    };
-
-    // const excludedFiles = safeJSONParse(process.env.EXCLUDEDFILES);
-    // const excludedDirectories = safeJSONParse(process.env.EXCLUDEDDIRECTORIES);
-
+    const fileNames = getNoRouteList();
     let finishGroupedFiles: Record<string, Directory> = {};
-
     fileNames.forEach((filePath) => {
         const { directories, filename, url, yamlConfig } = extractInfo(filePath.toString());
         if (yamlConfig.done) {
@@ -119,14 +134,7 @@ export const getFinishGroupedFiles = (): Record<string, Directory> => {
 };
 
 export const getTodoGroupedFiles = (): Record<string, Directory> => {
-    const fileNames = getFileList();
-
-    const safeJSONParse = (param: string | undefined): string[] | [] => {
-        return param ? JSON.parse(param) : [];
-    };
-
-    // const excludedFiles = safeJSONParse(process.env.EXCLUDEDFILES);
-    // const excludedDirectories = safeJSONParse(process.env.EXCLUDEDDIRECTORIES);
+    const fileNames = getNoRouteList();
 
     let todoGroupedFiles: Record<string, Directory> = {};
 
@@ -141,14 +149,7 @@ export const getTodoGroupedFiles = (): Record<string, Directory> => {
 };
 
 export const getGroupedFiles = (): Record<string, Directory> => {
-    const fileNames = getFileList();
-
-    const safeJSONParse = (param: string | undefined): string[] | [] => {
-        return param ? JSON.parse(param) : [];
-    };
-
-    // const excludedFiles = safeJSONParse(process.env.EXCLUDEDFILES_SEARCH);
-    // const excludedDirectories = safeJSONParse(process.env.EXCLUDEDDIRECTORIES_SEARCH);
+    const fileNames = getNoRouteList();
 
     let groupedFiles: Record<string, Directory> = {};
 
@@ -161,25 +162,22 @@ export const getGroupedFiles = (): Record<string, Directory> => {
 };
 
 export const getFullSearchList = async (): Promise<SearchItem[]> => {
-    const fileNames = getFileList();
+    const fileNames = getNoSearchList();
 
-    const doneList = await fileNames
-        // .filter()
-        .map(async (filePath: string) => {
-            const { directories, filename, url } = extractInfo(filePath);
-            // console.log(directories[directories.length-1]);
-            const slug = getSlug(filePath);
-            const mdText = getPost({ params: { slug } });
-            return {
-                key: filePath,
-                url: url,
-                filename: filename,
-                courseName: directories[directories.length - 1],
-                content: await getPlainContent(mdText),
-            } as SearchItem;
-        });
+    const doneList = await fileNames.map(async (filePath: string) => {
+        const { directories, filename, url } = extractInfo(filePath);
+        // console.log(directories[directories.length-1]);
+        const slug = getSlug(filePath);
+        const mdText = getPost({ params: { slug } });
+        return {
+            key: filePath,
+            url: url,
+            filename: filename,
+            courseName: directories[directories.length - 1],
+            content: await getPlainContent(mdText),
+        } as SearchItem;
+    });
 
-    // const finalList: { filteredList: SearchItem }[] =  doneList.map(item => ({ filteredList: item }));
     const finalList: SearchItem[] = await Promise.all(doneList.map(async (item) => await item));
 
     return finalList;
@@ -200,7 +198,7 @@ export const getSlug = (pathstr: string) => {
 };
 
 export const getSlugs = () => {
-    const fileNames = getFileList();
+    const fileNames = getNoRouteList();
     const paths = fileNames.map((fileName) => {
         const slug = getSlug(fileName.toString());
         return { slug };
@@ -210,11 +208,7 @@ export const getSlugs = () => {
 
 export const getPost = ({ params }: { params: { slug: string[] } }) => {
     const filepath = params.slug.map((segment) => decodeURIComponent(segment)).join("/");
-    // console.log(filepath);
-    const postFilePath = path.join(process.cwd(), "Notes", filepath + ".md").replaceAll(" ", " ");
-    //   console.log(postFilePath.replaceAll(" ","\\ "));
-    // console.log(decodeURI(postFilePath));
+    const postFilePath = path.join(process.cwd(), process.env.MDFOLDER!, filepath + ".md").replaceAll(" ", " ");
     const mdText = fs.readFileSync(decodeURI(postFilePath), "utf8");
-    // const mdText = "";
     return mdText;
 };
