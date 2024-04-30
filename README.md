@@ -129,14 +129,23 @@ Template for `.env.local`:
 
 ```env
 # parameters for seraching
-EXCLUDEDFILES_SEARCH = ["markdownCheatsheet.md","ch1.md"]
-EXCLUDEDDIRECTORIES_SEARCH = []
+EXCLUDEDFILES_SEARCH = ["markdownCheatsheet.md","ignore search p.md"]
+EXCLUDEDDIRECTORIES_SEARCH = ["ignore search post"]
 
 # parameters for site listing
-EXCLUDEDFILES = []
-EXCLUDEDDIRECTORIES = []
+EXCLUDEDFILES = ["ignore routing d.md"]
+EXCLUDEDDIRECTORIES = ["ignore routing dir"]
+
 MDFOLDER = "Notes"
 ```
+
+### Expected outcomes
+- `ignore search p.md` and files under `ignore search post` can not be searched.
+- `ignore routing d.md` and files under `ignore routing dir` will not be routed. This implies the content of those files can not be searched.
+
+> [!IMPORTANT]
+> When you update your `.env.local` file, remember update it in your vercel project.
+
 
 ## Build local server
 
