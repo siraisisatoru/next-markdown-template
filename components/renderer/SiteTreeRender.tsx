@@ -55,6 +55,7 @@ const SiteTreeRender = ({ nameList, isIndex, finished }: Props) => {
                     lookupObj["maxIndex"] == -1 ? (
                         <li key={file.name} className="whitespace-normal">
                             <Link
+                                prefetch={false}
                                 onClick={() => {
                                     isIndex ? null : document.getElementById("my-drawer")?.click();
                                 }}
@@ -132,8 +133,7 @@ const SiteTreeRender = ({ nameList, isIndex, finished }: Props) => {
 
         return (
             <ul className={`menu gap-1 ${isIndex && finished ? "menu-xs" : ""}`}>
-                {Object.entries(directory)
-                .map(([key, value]) => (
+                {Object.entries(directory).map(([key, value]) => (
                     <li key={key} className="whitespace-normal">
                         <details
                             open={

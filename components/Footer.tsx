@@ -16,7 +16,7 @@ const Footer = () => {
                         <FaRegCopyright className="inline" />{" "}
                         <span>
                             2024 SiraisiSatoru{" "}
-                            <Link href="https://github.com/siraisisatoru/">
+                            <Link href="https://github.com/siraisisatoru/" prefetch={false}>
                                 <FaGithub className="inline" />
                             </Link>
                             . All right reserved.
@@ -24,15 +24,15 @@ const Footer = () => {
                     </p>
                     <p>
                         <span>Powered by </span>
-                        <Link href="https://nextjs.org/">
+                        <Link href="https://nextjs.org/" prefetch={false}>
                             Next.js <SiNextdotjs className="inline" />
                         </Link>
                         <span> , </span>
-                        <Link href="https://tailwindcss.com/">
+                        <Link href="https://tailwindcss.com/" prefetch={false}>
                             Tailwind <SiTailwindcss className="inline" />
                         </Link>
                         <span> and </span>
-                        <Link href="https://daisyui.com/">
+                        <Link href="https://daisyui.com/" prefetch={false}>
                             Daisyui <SiDaisyui className="inline text-3xl" />
                         </Link>
                         <span>.</span>

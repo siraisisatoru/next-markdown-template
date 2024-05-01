@@ -560,7 +560,8 @@ export const getMdRender = async (mdText: string) => {
                             />
                         );
                     }
-                    if (props.href) return <Link href={props.href} {...props}></Link>;
+                    if (props.href)
+                        return <Link prefetch={false} href={props.href} {...props}></Link>;
                 },
 
                 img: ({ node, ...props }) => {

@@ -75,6 +75,7 @@ const MainNav = async () => {
             </div>
             <div className="flex flex-1">
                 <Link
+                    prefetch={false}
                     className="btn btn-ghost gap-4 hover:bg-transparent text-lg sm:text-xl max-w-full text-wrap flex-nowrap h-fit"
                     href="/">
                     <Image
@@ -91,7 +92,7 @@ const MainNav = async () => {
             </div>
 
             <div className="flex-none">
-                <SearchBar searchList={searchList}/>
+                <SearchBar searchList={searchList} />
 
                 <div className="dropdown dropdown-hover dropdown-end">
                     <div

@@ -125,6 +125,7 @@ const SearchBarRender = ({ fuse }: { fuse: Fuse<SearchItem> }) => {
                                                 <tr>
                                                     <th className="bg-gradient-to-tr from-base-300 to-bafrom-base-300/5 rounded-md shadow-inner shadow-slate-300 gap-4 flex items-center">
                                                         <Link
+                                                            prefetch={false}
                                                             href={`/${encodeURI(result.item.url)}`}
                                                             className="link text-lg capitalize break-words whitespace-normal"
                                                             onClick={() => {
