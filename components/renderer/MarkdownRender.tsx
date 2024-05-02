@@ -438,16 +438,14 @@ export const getMdRender = async (mdText: string) => {
                     } else {
                         return (
                             <>
-                                <div className="relative overflow-x-hidden ">
+                                <div className="relative">
                                     <CopyCodeBtn codeStr={codeChunk} />
 
                                     {language ? (
                                         <span className="right-0 bottom-0 z-40 absolute mb-4 mr-2 rounded-lg p-1 text-xs uppercase text-base-300 bg-base-content/40 backdrop-blur-sm">
                                             {language}
                                         </span>
-                                    ) : (
-                                        <></>
-                                    )}
+                                    ) : null}
                                     <TerminalRender renderStr={codeChunk} language={language} />
                                 </div>
 

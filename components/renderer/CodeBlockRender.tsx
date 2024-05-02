@@ -136,7 +136,7 @@ const CodeBlockRender = ({ codeStr, metaInfo, language }: Props) => {
                 {metaInfo.toLowerCase().includes("monitor") &&
                 (language?.match(/(py\b.*)/i) || language?.match(/(python\b.*)/i)) ? (
                     <>
-                        <pre className="prismjs not-prose mx-4 my-2 text-sm mockup-code shadow-xl ">
+                        <pre className="prismjs not-prose mx-4 my-2 text-xs sm:text-sm mockup-code shadow-xl ">
                             <pre className="px-8 whitespace-pre-wrap before:hidden">
                                 {parsedData.map((item, index) => {
                                     if (item.type === "text") {
@@ -162,7 +162,7 @@ const CodeBlockRender = ({ codeStr, metaInfo, language }: Props) => {
                     </>
                 ) : (
                     <>
-                        <pre className="prismjs not-prose mx-4 my-2 text-sm mockup-code shadow-xl ">
+                        <pre className="prismjs not-prose mx-4 my-2 text-xs sm:text-sm mockup-code shadow-xl ">
                             <pre className="px-8 whitespace-pre-wrap before:hidden">
                                 {executeOutput}
                             </pre>

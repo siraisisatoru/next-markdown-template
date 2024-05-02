@@ -14,7 +14,7 @@ const TerminalRender = ({ renderStr, language }: Props) => {
         <SyntaxHighlighter
             style={vscDarkPlus}
             language={language ? language : "plaintext"}
-            className="text-sm my-2 mockup-code not-prose"
+            className="text-xs sm:text-sm my-2 mockup-code not-prose"
             codeTagProps={{style: {} , className:""}}
             showLineNumbers={true}
             useInlineStyles={false}
@@ -35,7 +35,7 @@ const TerminalRender = ({ renderStr, language }: Props) => {
                             {
                                 children,
                                 properties: {
-                                    className: [],
+                                    className: ["whitespace-nowrap pr-8"],
                                 },
                                 tagName: "span",
                                 type: "element",
