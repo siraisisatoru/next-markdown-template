@@ -9,13 +9,11 @@ interface Props {
 }
 
 const TerminalRender = ({ renderStr, language }: Props) => {
-    
     return (
         <SyntaxHighlighter
             style={vscDarkPlus}
             language={language ? language : "plaintext"}
             className="text-xs sm:text-sm my-2 mockup-code not-prose"
-            codeTagProps={{style: {} , className:""}}
             showLineNumbers={true}
             useInlineStyles={false}
             lineNumberStyle={{ minWidth: "4em" }}
@@ -35,7 +33,7 @@ const TerminalRender = ({ renderStr, language }: Props) => {
                             {
                                 children,
                                 properties: {
-                                    className: ["whitespace-nowrap pr-8"],
+                                    className: ["text-nowrap pr-8"],
                                 },
                                 tagName: "span",
                                 type: "element",
@@ -51,7 +49,7 @@ const TerminalRender = ({ renderStr, language }: Props) => {
                     });
                 });
             }}>
-            {String(renderStr).replace(/\n$/, "")}
+            {String(renderStr)}
         </SyntaxHighlighter>
     );
 };

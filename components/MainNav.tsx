@@ -21,7 +21,7 @@ const MainNav = async () => {
                         {/* Page content here */}
                         <label
                             htmlFor="my-drawer"
-                            className="btn bg-transparent border-none shadow-none drawer-button">
+                            className="btn btn-sm sm:btn-md m-1 btn-square btn-ghost drawer-button">
                             <FaBars />
                         </label>
                     </div>

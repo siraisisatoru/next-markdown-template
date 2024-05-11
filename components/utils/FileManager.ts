@@ -168,7 +168,7 @@ export const getFullSearchList = async (): Promise<SearchItem[]> => {
         const { directories, filename, url } = extractInfo(filePath);
         // console.log(directories[directories.length-1]);
         const slug = getSlug(filePath);
-        const mdText = getPost({ params: { slug } });
+        const mdText = getPost({ params: { slug } }).mdText;
         return {
             key: filePath,
             url: url,
@@ -208,7 +208,10 @@ export const getSlugs = () => {
 
 export const getPost = ({ params }: { params: { slug: string[] } }) => {
     const filepath = params.slug.map((segment) => decodeURIComponent(segment)).join("/");
-    const postFilePath = path.join(process.cwd(), process.env.MDFOLDER!, filepath + ".md").replaceAll(" ", " ");
+    const postFilePath = path
+        .join(process.cwd(), process.env.MDFOLDER!, filepath + ".md")
+        .replaceAll(" ", " ");
     const mdText = fs.readFileSync(decodeURI(postFilePath), "utf8");
-    return mdText;
+    const status = fs.statSync(decodeURI(postFilePath));
+    return { mdText: mdText, dates: { createTime: status.birthtime, modifyTime: status.mtime } };
 };

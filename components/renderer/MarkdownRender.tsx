@@ -55,7 +55,8 @@ const MermaidRender = dynamic(() => import("./MermaidRender"), { ssr: false });
 
 export interface MDYaml {
     title: string;
-    date: string;
+    createDate: Date;
+    lastModify: Date;
     exeCPP: boolean;
     exePYTHON: boolean;
     abstract: string;
@@ -63,13 +64,20 @@ export interface MDYaml {
     done: boolean;
 }
 
-export const getMdYaml = (mdText: string) => {
+export const getMdYaml = ({
+    mdText,
+    dates,
+}: {
+    mdText: string;
+    dates: { createTime: Date; modifyTime: Date };
+}) => {
     // Split the markdown string by the YAML delimiter ("+=+=+=+")
     const mdConfig = mdText.split("+=+=+=+")[1];
 
     let jsonData: MDYaml = {
         title: "YOU NEED A TITLE",
-        date: "2001-01-01 00:00:00",
+        createDate: dates.createTime,
+        lastModify: dates.modifyTime,
         exeCPP: false,
         exePYTHON: false,
         abstract: "",
@@ -80,7 +88,6 @@ export const getMdYaml = (mdText: string) => {
     if (mdConfig?.length > 1) {
         const mdConfigJson = yaml.load(mdConfig) as MDYaml;
         jsonData.title = mdConfigJson?.title || jsonData.title;
-        jsonData.date = mdConfigJson?.date || jsonData.date;
         jsonData.exeCPP = mdConfigJson?.exeCPP || jsonData.exeCPP;
         jsonData.exePYTHON = mdConfigJson?.exePYTHON || jsonData.exePYTHON;
         jsonData.abstract = mdConfigJson?.abstract || jsonData.abstract;

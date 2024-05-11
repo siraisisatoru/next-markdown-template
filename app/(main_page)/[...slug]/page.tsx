@@ -3,8 +3,8 @@ import "./mdCss.css";
 import { getMdRender, getMdYaml } from "@/components/renderer/MarkdownRender";
 
 const MarkdownPage = async ({ params }: { params: { slug: string[] } }) => {
-    const mdStr = getPost({ params });
-    const jsonData = getMdYaml(mdStr);
+    const mdDetails = getPost({ params });
+    const jsonData = getMdYaml(mdDetails);
     return (
         <>
             <div className=" flex flex-col max-w-[120ch] px-8 md:px-20 mx-auto mt-6">
@@ -13,7 +13,9 @@ const MarkdownPage = async ({ params }: { params: { slug: string[] } }) => {
                         {jsonData.title}
                     </h1>
 
-                    <p>Created on {jsonData.date}</p>
+                    <p>Created on {jsonData.createDate.toLocaleString()}</p>
+                    <p>Last modified on {jsonData.lastModify.toLocaleString()}</p>
+
                     {jsonData.abstract != "" ? (
                         <>
                             <p className="indent-4 md:text-lg my-2">{jsonData.abstract}</p>
@@ -22,7 +24,7 @@ const MarkdownPage = async ({ params }: { params: { slug: string[] } }) => {
                 </div>
 
                 <article className="prose prose-sm sm:prose-base mx-auto !w-full !max-w-full">
-                    {getMdRender(mdStr)}
+                    {getMdRender(mdDetails.mdText)}
                 </article>
             </div>
         </>
@@ -36,7 +38,7 @@ type Params = {
 };
 
 // for garentee 404
-export async function generateStaticParams(): Promise<Params[]> {    
+export async function generateStaticParams(): Promise<Params[]> {
     return getSlugs();
 }
 
