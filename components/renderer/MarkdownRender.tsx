@@ -200,7 +200,7 @@ export const getMdRender = async (mdText: string) => {
                     }
                 } else if (node.type === "image") {
                     const src = node.url;
-                    const classRegex = /#([a-zA-Z0-9\-_\[\]]+)/g;
+                    const classRegex = /#([:a-zA-Z0-9\-_\[\]]+)/g;
                     const classMatch = src.match(classRegex);
                     // console.log(classMatch);
                     if (classMatch) {
