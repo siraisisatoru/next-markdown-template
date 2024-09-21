@@ -122,7 +122,7 @@ This project by default using Github as the OAuth service provider. To get the a
 > This process will be required twice for two different pairs of `GITHUB_ID` and `GITHUB_SECRET`. In other words, you will need to register two different app for this single project in order to be functional in production and development. Remember the `Authorization callback URL` for dev will be `http://localhost:5173/api/auth/callback/github` while the production one will be `https://<your domain>/api/auth/callback/github`.
 
 > [!IMPORTANT]
-> Once you have two pairs of `GITHUB_ID` and `GITHUB_SECRET`, put the local one in local `.env.local` file and upload the another one to vercel.
+> Once you have two pairs of `GITHUB_ID` and `GITHUB_SECRET`, put the local one in local `.env.local` file and upload the another one to Vercel (or your hosting service environment variable).
 
 ## CREATE LOCAL ENV FILE
 
@@ -214,7 +214,7 @@ You will also need to go to `Settings` -> `Environment Variables` -> `Import` un
 
 ~~Be aware your deployment may easily over the storage bandwidth per day in the free tier.~~
 
-Had been experienced with firebase for past couple monthes and the project become big enough and consuming a lot of resources that can easily excess the free tier. The personal project had been rencently transferred to vercel.
+Had been experienced with Firebase for past couple monthes and the project become big enough and consuming a lot of resources that can easily excess the free tier. The personal project had been rencently transferred to Vercel.
 
 # Contributing
 
