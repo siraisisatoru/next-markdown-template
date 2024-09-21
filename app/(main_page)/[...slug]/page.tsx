@@ -1,14 +1,31 @@
-import { getPost, getSlugs } from "@/components/utils/FileManager";
 import "./mdCss.css";
 import { getMdRender, getMdYaml } from "@/components/renderer/MarkdownRender";
+import path from "path";
+import fs from "fs";
 
-const MarkdownPage = async ({ params }: { params: { slug: string[] } }) => {
-    const mdDetails = getPost({ params });
-    const jsonData = getMdYaml(mdDetails);
+interface MdPageProps {
+    slug: string[];
+}
+
+const MarkdownPage = ({ params }: { params: MdPageProps }) => {
+    const filepath = params.slug.map((segment) => decodeURIComponent(segment)).join("/");
+    const postFilePath = path.join(process.cwd(), process.env.MDFOLDER!, filepath + ".md");
+
+    // try {
+    const mdText = fs.readFileSync(decodeURI(postFilePath), "utf8");
+    const status = fs.statSync(decodeURI(postFilePath));
+    // } catch (error) {
+    //     console.log(error);
+    // }
+
+    const jsonData = getMdYaml({
+        mdText: mdText,
+        dates: { createTime: status.birthtime, modifyTime: status.mtime },
+    });
     return (
         <>
-            <div className=" flex flex-col max-w-[120ch] px-8 md:px-20 mx-auto mt-6">
-                <div className="flex flex-col gap-2 mt-3">
+            <div className="flex flex-col max-w-[120ch] w-full px-8 md:px-20 mx-auto my-6">
+                <div className="flex flex-col gap-2">
                     <h1 className="text-4xl md:text-5xl first-letter:uppercase ">
                         {jsonData.title}
                     </h1>
@@ -24,7 +41,7 @@ const MarkdownPage = async ({ params }: { params: { slug: string[] } }) => {
                 </div>
 
                 <article className="prose prose-sm sm:prose-base mx-auto !w-full !max-w-full">
-                    {getMdRender(mdDetails.mdText)}
+                    {getMdRender(mdText)}
                 </article>
             </div>
         </>
@@ -33,13 +50,47 @@ const MarkdownPage = async ({ params }: { params: { slug: string[] } }) => {
 
 export default MarkdownPage;
 
-type Params = {
-    slug: string[];
-};
+export async function generateStaticParams() {
+    const mdFolder = process.env.MDFOLDER;
+    if (!mdFolder) return [];
 
-// for garentee 404
-export async function generateStaticParams(): Promise<Params[]> {
-    return getSlugs();
+    const postsDirectory = path.join(process.cwd(), mdFolder);
+
+    // Read all file names recursively from the posts directory
+    const fileNames = fs.readdirSync(postsDirectory, { recursive: true });
+
+    // Parse excluded files and directories from environment variables
+    const excludedFiles: string[] = process.env.EXCLUDEDFILES
+        ? JSON.parse(process.env.EXCLUDEDFILES)
+        : [];
+    const excludedDirs: string[] = process.env.EXCLUDEDDIRECTORIES
+        ? JSON.parse(process.env.EXCLUDEDDIRECTORIES)
+        : [];
+
+    return fileNames
+        .filter((file) => String(file).endsWith(".md")) // Keep only Markdown files
+        .filter(
+            (file) =>
+                // Exclude files that are in the excludedFiles list
+                !excludedFiles.some((excluded) => String(file).endsWith(excluded)) &&
+                // Exclude files that are within any of the excluded directories
+                excludedDirs.every((dir) => !String(file).includes(`/${dir}/`))
+        )
+        .sort() // Optional: Sort the files alphabetically
+        .map((file) => {
+            // Generate the slug by removing the .md extension and splitting the path
+            const slug = String(file)
+                .replace(/\.md$/, "") // Remove file extension
+                .split(path.sep) // Split path by separator
+                .filter(Boolean) // Remove empty segments
+                .map((segment) =>
+                    process.env.NODE_ENV === "production" ? segment : encodeURIComponent(segment)
+                );
+
+            return {
+                slug,
+            };
+        });
 }
 
 // Use this like to make sure url must be one of the markdown file

@@ -1,18 +1,20 @@
 import React from "react";
-import ThemeSwitch from "./UI/ThemeSwitch";
 import { FaBars, FaFlaskVial } from "react-icons/fa6";
-import { FaGoogle, FaUserAlt, FaHome, FaRoute } from "react-icons/fa";
+import { FaHome, FaRoute } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 import SiteTree from "./SiteTree";
 import CloseDrawerLink from "./UI/CloseDrawerLink";
 import SearchBar from "./UI/SearchBar";
 import { getFullSearchList } from "./utils/FileManager";
+import DropdownSelect from "./UI/nav/DropdownSelect";
+import { auth } from "@/auth";
 
 const MainNav = async () => {
     const searchList = await getFullSearchList();
+    const session = await auth();
+
     return (
-        // MARK: hello
         <nav className="navbar bg-base-200 sticky top-0 z-50">
             <div className="flex-none">
                 <div className="drawer z-50">
@@ -53,22 +55,23 @@ const MainNav = async () => {
                                 </CloseDrawerLink>
                             </li>
                             <li>
-                                <CloseDrawerLink href="/testhook">
+                                <CloseDrawerLink href="/Website%20page/Cheatsheet">
                                     <FaFlaskVial />
-                                    Page function tests
+                                    Markdown render cheatsheet
                                 </CloseDrawerLink>
-                                {/* <Link >
-                                    
-                                </Link> */}
                             </li>
-                            <li>
-                                <div className="pointer-events-none">
-                                    <FaRoute />
-                                    Notes index
-                                </div>
-                                <SiteTree isIndex={false} />
-                                {/* <SiteTreeRender groupedFiles={groupedFiles} /> */}
-                            </li>
+
+                            {session?.user ? (
+                                <>
+                                    <li>
+                                        <div className="pointer-events-none">
+                                            <FaRoute />
+                                            Notes index
+                                        </div>
+                                        <SiteTree isIndex={false} />
+                                    </li>
+                                </>
+                            ) : null}
                         </ul>
                     </div>
                 </div>
@@ -93,30 +96,7 @@ const MainNav = async () => {
 
             <div className="flex-none">
                 <SearchBar searchList={searchList} />
-
-                <div className="dropdown dropdown-hover dropdown-end">
-                    <div
-                        tabIndex={0}
-                        role="button"
-                        className="btn btn-sm sm:btn-md m-1 btn-square btn-ghost">
-                        {/* <FaEllipsis /> */}
-                        <FaUserAlt />
-                    </div>
-
-                    <ul
-                        tabIndex={0}
-                        className={`dropdown-content z-[1] shadow-xl border bg-base-100 rounded-box w-44 dark:border-neutral-600 border-neutral-300`}>
-                        <li className="m-3">
-                            <button className="btn btn-ghost w-full">
-                                <FaGoogle /> Log-in
-                            </button>
-                        </li>
-
-                        <li className="m-3">
-                            <ThemeSwitch />
-                        </li>
-                    </ul>
-                </div>
+                <DropdownSelect />
             </div>
         </nav>
     );

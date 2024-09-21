@@ -2,11 +2,17 @@ import SiteTree from "@/components/SiteTree";
 import React from "react";
 import Image from "next/image";
 import profileIcon from "../../public/img/profileIcon.jpg";
+import { auth } from "@/auth";
+import { HiOutlineInformationCircle, HiOutlineXCircle } from "react-icons/hi";
+import CloseDrawerLink from "@/components/UI/CloseDrawerLink";
+import { FaFlaskVial } from "react-icons/fa6";
 
-const HomePage = () => {
+const HomePage = async () => {
+    const session = await auth();
+
     return (
         <>
-            <div className=" flex flex-col max-w-[120ch] px-8 md:px-20 mx-auto mt-6 gap-4">
+            <div className=" flex flex-col max-w-[120ch] px-8 md:px-20 mx-auto my-6 gap-4">
                 <div className="flex flex-col">
                     <div className="flex flex-col sm:flex-row gap-4">
                         <div className="flex-shrink-0 m-4 sm:my-auto ">
@@ -59,25 +65,59 @@ const HomePage = () => {
                         </div>
                     </div>
                 </div>
-
-                <div className="">
-                    <h3 className="text-lg mb-4 font-bold">Quick indexing:</h3>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-2">
-                        <SiteTree isIndex={true} finished={true} />
-                    </div>
-
+                {session?.user ? (
                     <div className="">
-                        <h3 className="text-lg mb-4 font-bold">Todo list:</h3>
-                        <SiteTree isIndex={true} finished={false} />
+                        <h3 className="text-lg mb-4 font-bold">Quick indexing:</h3>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-2">
+                            <SiteTree isIndex={true} finished={true} />
+                        </div>
+
+                        <div className="">
+                            <h3 className="text-lg mb-4 font-bold">Todo list:</h3>
+                            <SiteTree isIndex={true} finished={false} />
+                        </div>
                     </div>
-                </div>
-                {/* <div className="">
-                        <h3 className="text-lg mb-4 font-bold">Recent posts in this wiki :</h3>
-                        <div className="h-72 bg-white"></div>
-                        <h3 className="text-lg mb-4 font-bold">Updates of this wiki:</h3>
-                        <div className="h-32 bg-yellow-300"> </div>
-                    </div> */}
+                ) : (
+                    <>
+                        <div role="alert" className="alert alert-info">
+                            <HiOutlineInformationCircle className="stroke-current shrink-0 h-6 w-6" />
+                            <span className="prose text-[var(--fallback-erc,oklch(var(--erc)/var(--tw-text-opacity)));]">
+                                <ul>
+                                    <li>
+                                        <div>
+                                            This demo website required user to login with specific
+                                            github account to access private pages that generated
+                                            from markdown files. The accessible account is defined
+                                            in environment file.
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            The markdown rendered result can be found
+                                            <div className="w-64 mx-auto">
+                                                <CloseDrawerLink
+                                                    href="/Website%20page/Cheatsheet"
+                                                    className="flex flex-row btn btn-xs ">
+                                                    <FaFlaskVial />
+                                                    Page function tests
+                                                </CloseDrawerLink>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </span>
+                        </div>
+                        <div role="alert" className="alert alert-error ">
+                            <HiOutlineXCircle className="stroke-current shrink-0 h-6 w-6" />
+                            <span>
+                                <div>You need to log-in to view the content.</div>
+                                <div>This wiki page only autherised to Siraisisatoru.</div>
+                                <div>Other visitors login will not take any effect.</div>
+                            </span>
+                        </div>
+                    </>
+                )}
             </div>
         </>
     );
