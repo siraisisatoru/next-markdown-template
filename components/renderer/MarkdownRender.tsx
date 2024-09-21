@@ -155,40 +155,38 @@ export const getMdRender = async (mdText: string) => {
                         // const tagName = node.type === "span" ;
                         data.hName = tagName;
                         if (node.attributes?.class == "alert") {
-                            data.hProperties = h(
-                                tagName,
-                                { class: "my-4 alert", role: "alert" } || {}
-                            ).properties;
+                            data.hProperties = h(tagName, {
+                                class: "my-4 alert",
+                                role: "alert",
+                            }).properties;
                         } else if (node.attributes?.class == "info") {
-                            data.hProperties = h(
-                                tagName,
-                                { class: "my-4 alert alert-info", role: "alert" } || {}
-                            ).properties;
+                            data.hProperties = h(tagName, {
+                                class: "my-4 alert alert-info",
+                                role: "alert",
+                            }).properties;
                         } else if (node.attributes?.class == "success") {
-                            data.hProperties = h(
-                                tagName,
-                                { class: "my-4 alert alert-success", role: "alert" } || {}
-                            ).properties;
+                            data.hProperties = h(tagName, {
+                                class: "my-4 alert alert-success",
+                                role: "alert",
+                            }).properties;
                         } else if (node.attributes?.class == "warning") {
-                            data.hProperties = h(
-                                tagName,
-                                { class: "my-4 alert alert-warning", role: "alert" } || {}
-                            ).properties;
+                            data.hProperties = h(tagName, {
+                                class: "my-4 alert alert-warning",
+                                role: "alert",
+                            }).properties;
                         } else if (node.attributes?.class == "error") {
-                            data.hProperties = h(
-                                tagName,
-                                { class: "my-4 alert alert-error", role: "alert" } || {}
-                            ).properties;
+                            data.hProperties = h(tagName, {
+                                class: "my-4 alert alert-error",
+                                role: "alert",
+                            }).properties;
                         } else if (node.attributes?.class == "openChat") {
-                            data.hProperties = h(
-                                tagName,
-                                { class: "my-4 ml-4 chat chat-start" } || {}
-                            ).properties;
+                            data.hProperties = h(tagName, {
+                                class: "my-4 ml-4 chat chat-start",
+                            }).properties;
                         } else if (node.attributes?.class == "closeChat") {
-                            data.hProperties = h(
-                                tagName,
-                                { class: "my-4 mr-4 chat chat-end" } || {}
-                            ).properties;
+                            data.hProperties = h(tagName, {
+                                class: "my-4 mr-4 chat chat-end",
+                            }).properties;
                         } else {
                             data.hProperties = h(tagName, node.attributes || {}).properties;
                         }
