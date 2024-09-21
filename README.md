@@ -1,5 +1,9 @@
 # next-markdown-template
 
+<p align="center">
+  <img src="./public/img/logo.svg" alt="Template logo" />
+</p>
+
 This is a customized implementation of markdown renderer utilizing remark plugins, rehype plugins and pyodide in nextjs framework. This repository is a replica of a peer repo [`react-markdown-template`](https://github.com/siraisisatoru/react-markdown-template) while transferring the framework and language from javascript to typescript caused dramatic performance improvement.
 
 # Purpose of this template
@@ -8,15 +12,15 @@ I was planning to build my own wiki page that hosts privately. My goal was to ha
 
 To extend the idea of rendering markdown files in React which may be useful in some cases in general while no existing template is available for this, this project has been produced.
 
-This project was built on Vite and Reactjs. The page was decorated with Tailwind CSS and Daisyui.
+This project was built on Nextjs and decorated with Tailwind CSS and Daisyui.
 
 # Live Demo
 
-The under-developing demo is hosted on Google Firebase and can be accessed here [https://next-markdown-demo.vercel.app/](https://next-markdown-demo.vercel.app/)
+The under-developing demo is hosted on Vercel and can be accessed here [https://next-markdown-demo.vercel.app/](https://next-markdown-demo.vercel.app/)
 
 -   [x] Frontpage [https://next-markdown-demo.vercel.app/](https://next-markdown-demo.vercel.app/)
 -   [x] Markdown render samples [https://next-markdown-demo.vercel.app/Website%20page/Cheatsheet](https://next-markdown-demo.vercel.app/Website%20page/Cheatsheet)
--   [x] Page from markdown files
+-   [x] Page from markdown files (require login with github)
     -   [https://next-markdown-demo.vercel.app/coding_notes/algorithm_c](https://next-markdown-demo.vercel.app/coding_notes/algorithm_c)
     -   [https://next-markdown-demo.vercel.app/coding_notes/python_tutorials/python](https://next-markdown-demo.vercel.app/coding_notes/python_tutorials/python)
 
@@ -47,11 +51,16 @@ The under-developing demo is hosted on Google Firebase and can be accessed here 
 ## Advanced feature
 
 -   ✅ Client side fuzzy search of markdown files
+-   ✅ Authentication with Github account (utilise Authjs)
+
+## Work in progress
+
+-   🚧 React flow to draw and reproduce circuits
 
 ## Brief ideas
 
 -   💭 Image processing using Sharp js
--   💭 Google log-in and features with log-in users (bookmarks, lock pages access)
+-   💭 Connect with database to store bookmarks 
 
 # Notes
 
@@ -102,113 +111,18 @@ done: false
 other texts
 other text
 ```
-
-
-# Render results
-
-This section tends to be outdated and not updated from time to time due to the rapid speed of development of this project.
-
-
-
-
-<details>
-  <summary>Contents (table of content)</summary>
-    <img src="./README_img/contents.png" width="100%"/>
-</details>
-
-<details>
-  <summary>Github style collapse</summary>
-    <img src="./README_img/githubstyle%20collapse.png" width="100%"/>
-</details>
-
-<details>
-  <summary>Long text render sample</summary>
-      <img src="./README_img/long%20text%20render.png" width="100%"/>
-</details>
-
-<details>
-  <summary>Horizonal rules</summary>
-      <img src="./README_img/horizontal%20rules.png" width="100%"/>
-</details>
-
-<details>
-  <summary>Emphasis</summary>
-      <img src="./README_img/emphasis.png" width="100%"/>
-</details>
-
-<details>
-  <summary>Blockquotes</summary>
-      <img src="./README_img/blockquotes.png" width="100%"/>
-</details>
-
-<details>
-  <summary>Lists</summary>
-      <img src="./README_img/lists.png" width="100%"/>
-</details>
-
-<details>
-  <summary>Code blocks</summary>
-      <img src="./README_img/code.png" width="100%"/>
-</details>
-
-<details>
-  <summary>Tables</summary>
-      <img src="./README_img/table.png" width="100%"/>
-</details>
-
-<details>
-  <summary>Links</summary>
-      <img src="./README_img/links.png" width="100%"/>
-</details>
-
-<details>
-  <summary>Images</summary>
-      <img src="./README_img/images.png" width="100%"/>
-</details>
-
-<details>
-  <summary>Plugins (emojies, emphasis, subscript and superscript, ins and mark)</summary>
-      <img src="./README_img/plugin-emojies-emphasis-sub_sup-ins-mark.png" width="100%"/>
-</details>
-
-<details>
-  <summary>Footnotes</summary>
-      <img src="./README_img/footnotes.png" width="100%"/>
-</details>
-
-<details>
-  <summary>Definition lists</summary>
-      <img src="./README_img/definition%20lists.png" width="100%"/>
-</details>
-
-<details>
-  <summary>Custom containers</summary>
-    <img src="./README_img/container1.png" width="100%"/>
-    <img src="./README_img/container2.png" width="100%"/>
-</details>
-
-<details>
-  <summary>Python wrap</summary>
-      <img src="./README_img/python%20wrap.png" width="100%"/>
-</details>
-
-<!-- <details>
-  <summary>Python Pyodide</summary>
-      <img src="./README_img/ .png" width="100%"/>
-</details> -->
-
-<details>
-  <summary>Mermaid</summary>
-      <img src="./README_img/mermaid1.png" width="100%"/>
-      <img src="./README_img/mermaid2.png" width="100%"/>
-</details>
-<details>
-  <summary>GitHub flavored markdown (GFM) and HTML</summary>
-      <img src="./README_img/GFM%20and%20inline%20html.png" width="100%"/>
-</details>
-
-
+ 
 # Usage
+
+## Configure Github OAuth
+
+This project by default using Github as the OAuth service provider. To get the authentication feature working, some initial setup is needed. Please follow the [official guide to configure Github for OAuth](https://authjs.dev/guides/configuring-github#creating-an-oauth-app-in-github).
+
+> [!IMPORTANT]
+> This process will be required twice for two different pairs of `GITHUB_ID` and `GITHUB_SECRET`. In other words, you will need to register two different app for this single project in order to be functional in production and development. Remember the `Authorization callback URL` for dev will be `http://localhost:5173/api/auth/callback/github` while the production one will be `https://<your domain>/api/auth/callback/github`.
+
+> [!IMPORTANT]
+> Once you have two pairs of `GITHUB_ID` and `GITHUB_SECRET`, put the local one in local `.env.local` file and upload the another one to vercel.
 
 ## CREATE LOCAL ENV FILE
 
@@ -238,15 +152,28 @@ EXCLUDEDFILES = ["ignore routing d.md"]
 EXCLUDEDDIRECTORIES = ["ignore routing dir"]
 
 MDFOLDER = "Notes"
+
+NEXTAUTH_URL=http://localhost:5173
+
+# From last step
+GITHUB_ID=xxxxxxxx
+GITHUB_SECRET=xxxxxxxxxxxxxxxxxxxxxxxx
+
+# The email that allow to login with github. This can be single email string or an empty string that allows every one to login
+ALLOWED_EMAIL=""
+
+# The AUTH_SECRET can be automatically generated by `npx auth secret`
+AUTH_SECRET="xxxxxxxxxxxxxxxxxxxxxxxx" # Added by `npx auth`. Read more: https://cli.authjs.dev
+
 ```
 
 ### Expected outcomes
-- `ignore search p.md` and files under `ignore search post` can not be searched.
-- `ignore routing d.md` and files under `ignore routing dir` will not be routed. This implies the content of those files can not be searched.
+
+-   `ignore search p.md` and files under `ignore search post` can not be searched.
+-   `ignore routing d.md` and files under `ignore routing dir` will not be routed. This implies the content of those files can not be searched.
 
 > [!IMPORTANT]
 > When you update your `.env.local` file, remember update it in your vercel project.
-
 
 ## Build local server
 
@@ -260,7 +187,7 @@ npm i --legacy-peer-deps
 npm run dev
 ```
 
-Access the demo via link [http://localhost:3000/Website%20page/Cheatsheet](http://localhost:3000/Website%20page/Cheatsheet)
+Access the demo via link [http://localhost:5173/Website%20page/Cheatsheet](http://localhost:5173/Website%20page/Cheatsheet)
 
 ## Deploy to Vercel hobby plan
 
@@ -281,11 +208,13 @@ You will also need to go to `Settings` -> `Environment Variables` -> `Import` un
 > [!IMPORTANT]
 > Remember create `.env.local` file!
 
-Apparently, you can deploy NextJs project on Firebase while it needed in Blaze plan. The system is in the experiment stage and unstable to deploy (I was unable to deploy since two days ago)
+~~Apparently, you can deploy NextJs project on Firebase while it needed in Blaze plan. The system is in the experiment stage and unstable to deploy (I was unable to deploy since two days ago)~~
 
-More information can be found here: https://firebase.google.com/docs/hosting/frameworks/nextjs
+~~More information can be found here: https://firebase.google.com/docs/hosting/frameworks/nextjs~~
 
-Be aware your deployment may easily over the storage bandwidth per day in the free tier.
+~~Be aware your deployment may easily over the storage bandwidth per day in the free tier.~~
+
+Had been experienced with firebase for past couple monthes and the project become big enough and consuming a lot of resources that can easily excess the free tier. The personal project had been rencently transferred to vercel.
 
 # Contributing
 
