@@ -3,7 +3,7 @@ import React from "react";
 
 import Fuse from "fuse.js";
 import { SearchItem } from "../utils/FileManager";
-import SearchBarRender from "../renderer/SearchBarRender";
+import SearchBarRender from "../renderer/site_render/SearchBarRender";
 
 const SearchBar = ({ searchList }: { searchList: SearchItem[] }) => {
 

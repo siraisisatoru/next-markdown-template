@@ -46,7 +46,7 @@ import P5Render from "./p5Render";
 import CharacterRender from "./CharacterRender";
 import GalleryRender from "./GalleryRender";
 import TerminalRender from "./TerminalRender";
-import CopyCodeBtn from "../UI/CopyCodeBtn";
+import CopyCodeBtn from "../../UI/CopyCodeBtn";
 
 import dynamic from "next/dynamic";
 import CodeBlockRender from "./CodeBlockRender";
@@ -266,7 +266,7 @@ export const getMdRender = async (mdText: string) => {
                 remarkCustomPlugin,
             ]}
             rehypePlugins={[
-                rehypeKatex,
+                [rehypeKatex, { trust: true, strict: false }],
                 () => {
                     return function (tree) {
                         visit(tree, function (node) {
@@ -436,7 +436,11 @@ export const getMdRender = async (mdText: string) => {
                         return (
                             <>
                                 <div className="mx-4 my-2">
-                                    <TerminalRender renderStr={codeChunk} language={language} />
+                                    <TerminalRender
+                                        renderStr={codeChunk}
+                                        language={language}
+                                        execute={false}
+                                    />
                                 </div>
                             </>
                         );
@@ -451,42 +455,20 @@ export const getMdRender = async (mdText: string) => {
                                             {language}
                                         </span>
                                     ) : null}
-                                    <TerminalRender renderStr={codeChunk} language={language} />
+                                    <TerminalRender
+                                        renderStr={codeChunk}
+                                        language={language}
+                                        execute={isRun}
+                                    />
                                 </div>
 
-                                {isRun && isPython ? (
+                                {(isRun && isPython) || (isRun && isCpp) ? (
                                     <>
                                         <CodeBlockRender
                                             codeStr={codeChunk}
                                             metaInfo={dataMeta}
                                             language={language}
                                         />
-                                    </>
-                                ) : isRun && isCpp ? (
-                                    <>
-                                        {/* the code in this code block is Cpp, try to render the output for it */}
-                                        <CodeBlockRender
-                                            codeStr={codeChunk}
-                                            metaInfo={dataMeta}
-                                            language={language}
-                                        />
-
-                                        <pre className="not-prose">
-                                            {/* {loading ? (
-                                                <p>Loading Clang...</p>
-                                            ) : cppRef.current ? (
-                                                <div>
-                                                    <Codeblock
-                                                        langWorker={cppRef.current}
-                                                        code={codeChunk}
-                                                        metaInfo={dataMeta}
-                                                        lang={"cpp"}
-                                                    />
-                                                </div>
-                                            ) : (
-                                                <></>
-                                            )} */}
-                                        </pre>
                                     </>
                                 ) : (
                                     <>

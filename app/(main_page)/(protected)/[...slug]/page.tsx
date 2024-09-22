@@ -1,5 +1,5 @@
 import "./mdCss.css";
-import { getMdRender, getMdYaml } from "@/components/renderer/MarkdownRender";
+import { getMdRender, getMdYaml } from "@/components/renderer/markdown_render/MarkdownRender";
 import path from "path";
 import fs from "fs";
 

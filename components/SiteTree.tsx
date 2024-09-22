@@ -1,8 +1,7 @@
 import React from "react";
 import { getGroupedFiles, getFinishGroupedFiles, getTodoGroupedFiles } from "./utils/FileManager";
 import { Directory } from "./utils/FileManager";
-import SiteTreeRender from "./renderer/SiteTreeRender";
-// import { headers } from "next/headers";
+import SiteTreeRender from "./renderer/site_render/SiteTreeRender";
 
 interface Props {
     isIndex: boolean;

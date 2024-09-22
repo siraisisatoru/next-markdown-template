@@ -6,6 +6,8 @@ import { auth } from "@/auth";
 import SignInButton from "../SignInButton";
 import SignOutButton from "../SignOutButton";
 
+import Image from "next/image";
+
 const DropdownSelect = async () => {
     const session = await auth();
 
@@ -16,9 +18,13 @@ const DropdownSelect = async () => {
                 role="button"
                 className="btn btn-sm sm:btn-md m-1 btn-square btn-ghost relative overflow-hidden">
                 {session?.user?.image ? (
-                    <img
+                    <Image
                         src={session.user.image}
+                        width={0} // Set your image width
+                        height={0} // Set your image height
+                        alt={"User profile image"}
                         className="w-full h-full object-cover rounded-sm"
+                        sizes="100vw"
                     />
                 ) : (
                     <FaUserAlt />

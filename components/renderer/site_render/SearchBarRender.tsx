@@ -3,7 +3,7 @@ import Fuse, { FuseResult } from "fuse.js";
 import React, { useState } from "react";
 import { FaMagnifyingGlass, FaXmark } from "react-icons/fa6";
 import { HiOutlineInformationCircle } from "react-icons/hi";
-import { SearchItem } from "../utils/FileManager";
+import { SearchItem } from "../../utils/FileManager";
 import Link from "next/link";
 
 interface ExtendedFuseResult<T> extends FuseResult<T> {

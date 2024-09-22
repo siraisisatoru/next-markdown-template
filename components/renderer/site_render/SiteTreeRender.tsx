@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Directory, Element } from "../utils/FileManager";
+import { Directory, Element } from "../../utils/FileManager";
 import { FaFolderClosed } from "react-icons/fa6";
 import { IoIosConstruct } from "react-icons/io";
 import { usePathname } from "next/navigation";
@@ -23,9 +23,6 @@ interface AnnotationList {
 }
 
 const SiteTreeRender = ({ nameList, isIndex, finished }: Props) => {
-    // const headersList = headers();
-    // const activeHost = headersList.get("x-invoke-path");
-    // console.log(headersList);
     const pathname = usePathname();
 
     function FileItem({ files, lookupObj }: { files: Element[]; lookupObj: LookupObj }) {

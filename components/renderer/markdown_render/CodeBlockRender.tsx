@@ -64,7 +64,7 @@ const CodeBlockRender = ({ codeStr, metaInfo, language }: Props) => {
     useEffect(() => {
         const runPythonCode = async () => {
             // Create a new worker instance
-            const worker = new Worker(new URL("../utils/workers/pyWorker", import.meta.url), {
+            const worker = new Worker(new URL("../../utils/workers/pyWorker", import.meta.url), {
                 type: "module",
             });
 
@@ -96,7 +96,7 @@ const CodeBlockRender = ({ codeStr, metaInfo, language }: Props) => {
         const runCppCode = async () => {
             // Create a new worker instance
             const worker = new Worker(
-                new URL("../utils/workers/cpp_worker/cpp_worker.js", import.meta.url),
+                new URL("../../utils/workers/cpp_worker/cpp_worker.js", import.meta.url),
                 {
                     type: "module",
                 }
@@ -133,11 +133,11 @@ const CodeBlockRender = ({ codeStr, metaInfo, language }: Props) => {
     return (
         <>
             <div>
-                {metaInfo.toLowerCase().includes("monitor") &&
-                (language?.match(/(py\b.*)/i) || language?.match(/(python\b.*)/i)) ? (
-                    <>
-                        <pre className="prismjs not-prose mx-4 my-2 text-xs sm:text-sm mockup-code shadow-xl ">
-                            <pre className="px-8 text-nowrap before:hidden">
+                <pre className="prismjs not-prose mx-4 mt-2 mb-6 text-xs sm:text-sm mockup-code shadow-xl ">
+                    <pre className="px-8 text-nowrap before:hidden">
+                        {metaInfo.toLowerCase().includes("monitor") &&
+                        (language?.match(/(py\b.*)/i) || language?.match(/(python\b.*)/i)) ? (
+                            <>
                                 {parsedData.map((item, index) => {
                                     if (item.type === "text") {
                                         return <span key={index}>{item.content}</span>;
@@ -157,16 +157,18 @@ const CodeBlockRender = ({ codeStr, metaInfo, language }: Props) => {
                                     }
                                     return null;
                                 })}
-                            </pre>
-                        </pre>
-                    </>
-                ) : (
-                    <>
-                        <pre className="prismjs not-prose mx-4 my-2 text-xs sm:text-sm mockup-code shadow-xl ">
-                            <pre className="px-8 text-nowrap before:hidden">{executeOutput}</pre>
-                        </pre>
-                    </>
-                )}
+                            </>
+                        ) : (
+                            <>
+                                {/* <pre className="prismjs not-prose mx-4 my-2 text-xs sm:text-sm mockup-code shadow-xl ">
+                            <pre className="px-8 text-nowrap before:hidden"> */}
+                                {executeOutput}
+                                {/* </pre>
+                        </pre> */}
+                            </>
+                        )}
+                    </pre>
+                </pre>
             </div>
         </>
     );

@@ -6,14 +6,15 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 interface Props {
     renderStr: string;
     language: string;
+    execute: boolean;
 }
 
-const TerminalRender = ({ renderStr, language }: Props) => {
+const TerminalRender = ({ renderStr, language, execute }: Props) => {
     return (
         <SyntaxHighlighter
             style={vscDarkPlus}
             language={language ? language : "plaintext"}
-            className="text-xs sm:text-sm my-2 mockup-code not-prose"
+            className={`text-xs sm:text-sm mt-2 ${execute ? "mb-2" : "mb-4"} mockup-code not-prose`}
             showLineNumbers={true}
             useInlineStyles={false}
             lineNumberStyle={{ minWidth: "4em" }}

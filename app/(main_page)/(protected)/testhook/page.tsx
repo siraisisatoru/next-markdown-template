@@ -1,8 +1,8 @@
 import React from "react";
 import QRCode from "react-qr-code";
-import P5Render from "@/components/renderer/p5Render";
+import P5Render from "@/components/renderer/markdown_render/p5Render";
 import { Cat } from "react-kawaii";
-import ChartRender from "@/components/renderer/ChartRender";
+import ChartRender from "@/components/renderer/markdown_render/ChartRender";
 
 const TestPage = () => {
     return (

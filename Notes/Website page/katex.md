@@ -68,14 +68,14 @@ $( \big( \Big( \bigg( \Bigg($ `( \big( \Big( \bigg( \Bigg(`
 
 ## Environments
 
-|                                                                    |                                                                                                                        |                                                                                                                |                                                                                                                                                                                                                                         |
-| :----------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| $\begin{matrix} a & b \\ c & d \end{matrix}$                       | `\begin{matrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{matrix}`                        | $\begin{array}{cc}a & b\\c & d\end{array}$                                                                     | `\begin{array}{cc}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{array}`                                                                                                                                       |
-| $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$                     | `\begin{pmatrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{pmatrix}`                      | $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$                                                                 | `\begin{bmatrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{bmatrix}`                                                                                                                                       |
-| $\begin{vmatrix} a & b \\ c & d \end{vmatrix}$                     | `\begin{vmatrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{vmatrix}`                      | $\begin{Vmatrix} a & b \\ c & d \end{Vmatrix}$                                                                 | `\begin{Vmatrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{Vmatrix}`                                                                                                                                       |
-| $\begin{Bmatrix} a & b \\ c & d \end{Bmatrix}$                     | `\begin{Bmatrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{Bmatrix}`                      | $\def\arraystretch{1.5}\begin{array}{c:c:c} a & b & c \\ \hline d & e & f \\ \hdashline g & h & i \end{array}$ | `\def\arraystretch{1.5}`<br>&nbsp;&nbsp;&nbsp;`\begin{array}{c:c:c}`<br>&nbsp;&nbsp;&nbsp;`a & b & c \\ \hline`<br>&nbsp;&nbsp;&nbsp;`d & e & f \\`<br>&nbsp;&nbsp;&nbsp;`\hdashline`<br>&nbsp;&nbsp;&nbsp;`g & h & i`<br>`\end{array}` |
-| $x = \begin{cases} a &\text{if } b \\ c &\text{if } d \end{cases}$ | `x = \begin{cases}`<br>&nbsp;&nbsp;&nbsp;`a &\text{if } b  \\`<br>&nbsp;&nbsp;&nbsp;`c &\text{if } d`<br>`\end{cases}` | $\begin{rcases} a &\text{if } b \\ c &\text{if } d \end{rcases}⇒…$                                             | `\begin{rcases}`<br>&nbsp;&nbsp;&nbsp;`a &\text{if } b  \\`<br>&nbsp;&nbsp;&nbsp;`c &\text{if } d`<br>`\end{rcases}⇒…`                                                                                                                  |
-| $\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}$             | `\begin{smallmatrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{smallmatrix}`              | $$\sum_{\begin{subarray}{l} i\in\Lambda\\  0<j<n\end{subarray}}$$                                              | `\sum_{`<br>`\begin{subarray}{l}`<br>&nbsp;&nbsp;&nbsp;`i\in\Lambda\\`<br>&nbsp;&nbsp;&nbsp;`0<j<n`<br>`\end{subarray}}`                                                                                                                |
+|                                                                    |                                                                                                                       |                                                                                                                |                                                                                                                                                                                                                                         |
+| :----------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| $\begin{matrix} a & b \\ c & d \end{matrix}$                       | `\begin{matrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{matrix}`                       | $\begin{array}{cc}a & b\\c & d\end{array}$                                                                     | `\begin{array}{cc}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{array}`                                                                                                                                       |
+| $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$                     | `\begin{pmatrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{pmatrix}`                     | $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$                                                                 | `\begin{bmatrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{bmatrix}`                                                                                                                                       |
+| $\begin{vmatrix} a & b \\ c & d \end{vmatrix}$                     | `\begin{vmatrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{vmatrix}`                     | $\begin{Vmatrix} a & b \\ c & d \end{Vmatrix}$                                                                 | `\begin{Vmatrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{Vmatrix}`                                                                                                                                       |
+| $\begin{Bmatrix} a & b \\ c & d \end{Bmatrix}$                     | `\begin{Bmatrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{Bmatrix}`                     | $\def\arraystretch{1.5}\begin{array}{c:c:c} a & b & c \\ \hline d & e & f \\ \hdashline g & h & i \end{array}$ | `\def\arraystretch{1.5}`<br>&nbsp;&nbsp;&nbsp;`\begin{array}{c:c:c}`<br>&nbsp;&nbsp;&nbsp;`a & b & c \\ \hline`<br>&nbsp;&nbsp;&nbsp;`d & e & f \\`<br>&nbsp;&nbsp;&nbsp;`\hdashline`<br>&nbsp;&nbsp;&nbsp;`g & h & i`<br>`\end{array}` |
+| $x = \begin{cases} a &\text{if } b \\ c &\text{if } d \end{cases}$ | `x = \begin{cases}`<br>&nbsp;&nbsp;&nbsp;`a &\text{if } b \\`<br>&nbsp;&nbsp;&nbsp;`c &\text{if } d`<br>`\end{cases}` | $\begin{rcases} a &\text{if } b \\ c &\text{if } d \end{rcases}⇒…$                                             | `\begin{rcases}`<br>&nbsp;&nbsp;&nbsp;`a &\text{if } b  \\`<br>&nbsp;&nbsp;&nbsp;`c &\text{if } d`<br>`\end{rcases}⇒…`                                                                                                                  |
+| $\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}$             | `\begin{smallmatrix}`<br>&nbsp;&nbsp;&nbsp;`a & b \\`<br>&nbsp;&nbsp;&nbsp;`c & d`<br>`\end{smallmatrix}`             | $$\sum_{\begin{subarray}{l} i\in\Lambda\\ 0<j<n\end{subarray}}$$                                               | `\sum_{`<br>`\begin{subarray}{l}`<br>&nbsp;&nbsp;&nbsp;`i\in\Lambda\\`<br>&nbsp;&nbsp;&nbsp;`0<j<n`<br>`\end{subarray}}`                                                                                                                |
 
 The auto-render extension will render the following environments even if they are not inside math delimiters such as `$$…$$`. They are display-mode only.
 
@@ -136,15 +136,17 @@ the command names in red (which you can configure via the `errorColor`
 an option of `trust: true`; you can also enable just some of the commands
 or for just some URLs via the `trust` [option](options.md).
 
-|                                                                                                                       |                                                                                                                       |
-| :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
-| $\href{https://katex.org/}{\KaTeX}$                                                                                   | `\href{https://katex.org/}{\KaTeX}`                                                                                   |
-| $\url{https://katex.org/}$                                                                                            | `\url{https://katex.org/}`                                                                                            |
-| $\includegraphics[height=0.8em, totalheight=0.9em, width=0.9em, alt=KA logo]{https://katex.org/img/khan-academy.png}$ | `\includegraphics[height=0.8em, totalheight=0.9em, width=0.9em, alt=KA logo]{https://katex.org/img/khan-academy.png}` |
-| $\htmlId{bar}{x}$ <code>…&lt;span id="bar" class="enclosing"&gt;…x…&lt;/span&gt;…</code>                              | `\htmlId{bar}{x}`                                                                                                     |
-| $\htmlClass{foo}{x}$ <code>…&lt;span class="enclosing foo"&gt;…x…&lt;/span&gt;…</code>                                | `\htmlClass{foo}{x}`                                                                                                  |
-| $\htmlStyle{color: red;}{x}$ <code>…&lt;span style="color: red;" class="enclosing"&gt;…x…&lt;/span&gt;…</code>        | `\htmlStyle{color: red;}{x}`                                                                                          |
-| $\htmlData{foo=a, bar=b}{x}$ <code>…&lt;span data-foo="a" data-bar="b" class="enclosing"&gt;…x…&lt;/span&gt;…</code>  | `\htmlData{foo=a, bar=b}{x}`                                                                                          |
+**PROBLEM IN THE FOLLOWING TABLE**
+
+|                                                                                                                       |                                                                                                                                                                                                               |
+| :-------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| $\href{https://katex.org/}{\KaTeX}$                                                                                   | `\href{https://katex.org/}{\KaTeX}`                                                                                                                                                                           |
+| $\url{https://katex.org/}$                                                                                            | `\url{https://katex.org/}`                                                                                                                                                                                    |
+| $\includegraphics[height=0.8em, totalheight=0.9em, width=0.9em, alt=KA logo]{https://katex.org/img/khan-academy.png}$ | `\includegraphics[height=0.8em, totalheight=0.9em, width=0.9em, alt=KA logo]{https://katex.org/img/khan-academy.png}` <br> This line can cause `React does not recognize the "vAlign" prop on a DOM element.` |
+| $\htmlId{bar}{x}$ <code>…&lt;span id="bar" class="enclosing"&gt;…x…&lt;/span&gt;…</code>                              | `\htmlId{bar}{x}`                                                                                                                                                                                             |
+| $\htmlClass{foo}{x}$ <code>…&lt;span class="enclosing foo"&gt;…x…&lt;/span&gt;…</code>                                | `\htmlClass{foo}{x}`                                                                                                                                                                                          |
+| $\htmlStyle{color: red;}{x}$ <code>…&lt;span style="color: red;" class="enclosing"&gt;…x…&lt;/span&gt;…</code>        | `\htmlStyle{color: red;}{x}`                                                                                                                                                                                  |
+| $\htmlData{foo=a, bar=b}{x}$ <code>…&lt;span data-foo="a" data-bar="b" class="enclosing"&gt;…x…&lt;/span&gt;…</code>  | `\htmlData{foo=a, bar=b}{x}`                                                                                                                                                                                  |
 
 `\includegraphics` supports `height`, `width`, `totalheight`, and `alt` in its first argument. `height` is required.
 
@@ -201,14 +203,14 @@ Math-mode Unicode (sub|super)script characters will render as if you had written
 
 **Unicode Mathematical Alphanumeric Symbols**
 
-| Item         | Range                   | Item              | Range                |
-| ------------ | ----------------------- | ----------------- | -------------------- |
-| Bold         | $\text{𝐀-𝐙 𝐚-𝐳 𝟎-𝟗}$    | Double-struck     | $\text{𝔸-}ℤ\ 𝕜$      |
-| Italic       | $\text{𝐴-𝑍 𝑎-𝑧}$        | Sans serif        | $\text{𝖠-𝖹 𝖺-𝗓 𝟢-𝟫}$ |
-| Bold Italic  | $\text{𝑨-𝒁 𝒂-𝒛}$        | Sans serif bold   | $\text{𝗔-𝗭 𝗮-𝘇 𝟬-𝟵}$ |
-| Script       | $\text{𝒜-𝒵}$            | Sans serif italic | $\text{𝘈-𝘡 𝘢-𝘻}$     |
-| Fractur      | $\text{𝔄-ℨ}\text{ 𝔞-𝔷}$ | Monospace         | $\text{𝙰-𝚉 𝚊-𝚣 𝟶-𝟿}$ |
-| Bold Fractur | $\text{𝕬-𝖅}\text{𝖆-𝖟}$  |                   |
+| Item         | Range                    | Item              | Range                |
+| ------------ | ------------------------ | ----------------- | -------------------- |
+| Bold         | $\text{𝐀-𝐙 𝐚-𝐳 𝟎-𝟗}$     | Double-struck     | $\text{𝔸-}ℤ\ 𝕜$      |
+| Italic       | $\text{𝐴-𝑍 𝑎-𝑧}$         | Sans serif        | $\text{𝖠-𝖹 𝖺-𝗓 𝟢-𝟫}$ |
+| Bold Italic  | $\text{𝑨-𝒁 𝒂-𝒛}$         | Sans serif bold   | $\text{𝗔-𝗭 𝗮-𝘇 𝟬-𝟵}$ |
+| Script       | $\text{𝒜-𝒵}$             | Sans serif italic | $\text{𝘈-𝘡 𝘢-𝘻}$     |
+| `Fractur`    | `$\text{𝔄-ℨ}\text{𝔞-𝔷}$` | Monospace         | $\text{𝙰-𝚉 𝚊-𝚣 𝟶-𝟿}$ |
+| Bold Fractur | $\text{𝕬-𝖅}\text{𝖆-𝖟}$   |                   |
 
 **Unicode**
 
@@ -223,7 +225,7 @@ All unrecognized characters will be treated as if they appeared in text mode, an
 
 For Persian composite characters, a user-supplied [plug-in](https://github.com/HosseinAgha/persian-katex-plugin) is under development.
 
-Any character can be written with the `\char` function and the Unicode code in hex. For example `\char"263a` will render as $\char"263a$.
+Any character can be written with the `\char` function and the Unicode code in hex. For example `\char"263a` will render as `$\char"263a$`.
 
 ## Layout
 
@@ -263,7 +265,7 @@ In display math, KaTeX does not insert automatic line breaks. It ignores display
 |                  |                                     |                                                                                                    |
 | :--------------- | :---------------------------------- | :------------------------------------------------------------------------------------------------- |
 | $x_n$ `x_n`      | $\stackrel{!}{=}$ `\stackrel{!}{=}` | $a \atop b$ `a \atop b`                                                                            |
-| $e^x$ `e^x`      | $\overset{!}{=}$ `\overset{!}{=}`   | $a\raisebox{0.25em}{$b$}c$ `a\raisebox{0.25em}{$b$}c`                                              |
+| $e^x$ `e^x`      | $\overset{!}{=}$ `\overset{!}{=}`   | `$a\raisebox{0.25em}{$b$}c$` `a\raisebox{0.25em}{$b$}c`                                            |
 | $\_u^o $ `_u^o ` | $\underset{!}{=}$ `\underset{!}{=}` | $a+\left(\vcenter{\frac{\frac a b}c}\right)$ `a+\left(\vcenter{\hbox{$\frac{\frac a b}c$}}\right)` |
 |                  |                                     | $$\sum_{\substack{0<i<m\\0<j<n}}$$ `\sum_{\substack{0<i<m\\0<j<n}}`                                |
 
@@ -313,16 +315,16 @@ KaTeX also supports `\llap`, `\rlap`, and `\clap`, but they will take only text,
 
 $\gdef\VERT{|}$
 
-|                       |                                                                            |                                                     |                             |
-| :-------------------- | :------------------------------------------------------------------------- | :-------------------------------------------------- | :-------------------------- |
-| $\forall$ `\forall`   | $\complement$ `\complement`                                                | $\therefore$ `\therefore`                           | $\emptyset$ `\emptyset`     |
-| $\exists$ `\exists`   | $\subset$ `\subset`                                                        | $\because$ `\because`                               | $\empty$ `\empty`           |
-| $\exist$ `\exist`     | $\supset$ `\supset`                                                        | $\mapsto$ `\mapsto`                                 | $\varnothing$ `\varnothing` |
-| $\nexists$ `\nexists` | $\mid$ `\mid`                                                              | $\to$ `\to`                                         | $\implies$ `\implies`       |
-| $\in$ `\in`           | $\land$ `\land`                                                            | $\gets$ `\gets`                                     | $\impliedby$ `\impliedby`   |
-| $\isin$ `\isin`       | $\lor$ `\lor`                                                              | $\leftrightarrow$ `\leftrightarrow`                 | $\iff$ `\iff`               |
-| $\notin$ `\notin`     | $\ni$ `\ni`                                                                | $\notni$ `\notni`                                   | $\neg$ `\neg` or `\lnot`    |
-|                       | $\Set{ x \VERT x<\frac 1 2 }$<br><code>\Set{ x &#124; x<\frac 1 2 }</code> | $\set{x\VERT x<5}$<br><code>\set{x&#124;x<5}</code> |                             |
+|                       |                                                                              |                                                       |                             |
+| :-------------------- | :--------------------------------------------------------------------------- | :---------------------------------------------------- | :-------------------------- |
+| $\forall$ `\forall`   | $\complement$ `\complement`                                                  | $\therefore$ `\therefore`                             | $\emptyset$ `\emptyset`     |
+| $\exists$ `\exists`   | $\subset$ `\subset`                                                          | $\because$ `\because`                                 | $\empty$ `\empty`           |
+| $\exist$ `\exist`     | $\supset$ `\supset`                                                          | $\mapsto$ `\mapsto`                                   | $\varnothing$ `\varnothing` |
+| $\nexists$ `\nexists` | $\mid$ `\mid`                                                                | $\to$ `\to`                                           | $\implies$ `\implies`       |
+| $\in$ `\in`           | $\land$ `\land`                                                              | $\gets$ `\gets`                                       | $\impliedby$ `\impliedby`   |
+| $\isin$ `\isin`       | $\lor$ `\lor`                                                                | $\leftrightarrow$ `\leftrightarrow`                   | $\iff$ `\iff`               |
+| $\notin$ `\notin`     | $\ni$ `\ni`                                                                  | $\notni$ `\notni`                                     | $\neg$ `\neg` or `\lnot`    |
+|                       | `$\Set{ x \VERT x<\frac 1 2 }$`<br><code>\Set{ x &#124; x<\frac 1 2 }</code> | `$\set{x\VERT x<5}$`<br><code>\set{x&#124;x<5}</code> |                             |
 
 Direct Input: $∀ ∴ ∁ ∵ ∃ ∣ ∈ ∉ ∋ ⊂ ⊃ ∧ ∨ ↦ → ← ↔ ¬$ ℂ ℍ ℕ ℙ ℚ ℝ
 
@@ -452,7 +454,7 @@ $\stackrel{!}{=}$ `\stackrel{!}{=}`
 | $\backepsilon$ `\backepsilon`                               | $\equiv$ `\equiv`                                     | $\mid$ `\mid`                     | $\succ$ `\succ`                               |
 | $\backsim$ `\backsim`                                       | $\fallingdotseq$ `\fallingdotseq`                     | $\models$ `\models`               | $\succapprox$ `\succapprox`                   |
 | $\backsimeq$ `\backsimeq`                                   | $\frown$ `\frown`                                     | $\multimap$ `\multimap`           | $\succcurlyeq$ `\succcurlyeq`                 |
-| $\between$ `\between`                                       | $\ge$ `\ge`                                           | $\origof$ `\origof`               | $\succeq$ `\succeq`                           |
+| $\between$ `\between`                                       | $\ge$ `\ge`                                           | `$\origof$` `\origof`             | $\succeq$ `\succeq`                           |
 | $\bowtie$ `\bowtie`                                         | $\geq$ `\geq`                                         | $\owns$ `\owns`                   | $\succsim$ `\succsim`                         |
 | $\bumpeq$ `\bumpeq`                                         | $\geqq$ `\geqq`                                       | $\parallel$ `\parallel`           | $\Supset$ `\Supset`                           |
 | $\Bumpeq$ `\Bumpeq`                                         | $\geqslant$ `\geqslant`                               | $\perp$ `\perp`                   | $\supset$ `\supset`                           |
@@ -465,7 +467,7 @@ $\stackrel{!}{=}$ `\stackrel{!}{=}`
 | $\Coloneqq$ `\Coloneqq` or<br>    `\coloncolonequals`       | $\gtreqqless$ `\gtreqqless`                           | $\propto$ `\propto`               | $\trianglerighteq$ `\trianglerighteq`         |
 | $\colonsim$ `\colonsim`                                     | $\gtrless$ `\gtrless`                                 | $\risingdotseq$ `\risingdotseq`   | $\varpropto$ `\varpropto`                     |
 | $\Colonsim$ `\Colonsim` or<br>    `\coloncolonsim`          | $\gtrsim$ `\gtrsim`                                   | $\shortmid$ `\shortmid`           | $\vartriangle$ `\vartriangle`                 |
-| $\cong$ `\cong`                                             | $\imageof$ `\imageof`                                 | $\shortparallel$ `\shortparallel` | $\vartriangleleft$ `\vartriangleleft`         |
+| $\cong$ `\cong`                                             | `$\imageof$` `\imageof`                               | $\shortparallel$ `\shortparallel` | $\vartriangleleft$ `\vartriangleleft`         |
 | $\curlyeqprec$ `\curlyeqprec`                               | $\in$ `\in` or `\isin`                                | $\sim$ `\sim`                     | $\vartriangleright$ `\vartriangleright`       |
 | $\curlyeqsucc$ `\curlyeqsucc`                               | $\Join$ `\Join`                                       | $\simcolon$ `\simcolon`           | $\vcentcolon$ `\vcentcolon` or<br>   `\ratio` |
 | $\dashv$ `\dashv`                                           | $\le$ `\le`                                           | $\simcoloncolon$ `\simcoloncolon` | $\vdash$ `\vdash`                             |
@@ -473,7 +475,7 @@ $\stackrel{!}{=}$ `\stackrel{!}{=}`
 | $\doteq$ `\doteq`                                           | $\leqq$ `\leqq`                                       | $\smallfrown$ `\smallfrown`       | $\Vdash$ `\Vdash`                             |
 | $\Doteq$ `\Doteq`                                           | $\leqslant$ `\leqslant`                               | $\smallsmile$ `\smallsmile`       | $\Vvdash$ `\Vvdash`                           |
 
-Direct Input: $= < > : ∈ ∋ ∝ ∼ ∽ ≂ ≃ ≅ ≈ ≊ ≍ ≎ ≏ ≐ ≑ ≒ ≓ ≖ ≗ ≜ ≡ ≤ ≥ ≦ ≧ ≫ ≬ ≳ ≷ ≺ ≻ ≼ ≽ ≾ ≿ ⊂ ⊃ ⊆ ⊇ ⊏ ⊐ ⊑ ⊒ ⊢ ⊣ ⊩ ⊪ ⊸ ⋈ ⋍ ⋐ ⋑ ⋔ ⋙ ⋛ ⋞ ⋟ ⌢ ⌣ ⩾ ⪆ ⪌ ⪕ ⪖ ⪯ ⪰ ⪷ ⪸ ⫅ ⫆ ≲ ⩽ ⪅ ≶ ⋚ ⪋ ⟂ ⊨ ⊶ ⊷$ `≔ ≕ ⩴`
+Direct Input: $= < > : ∈ ∋ ∝ ∼ ∽ ≂ ≃ ≅ ≈ ≊ ≍ ≎ ≏ ≐ ≑ ≒ ≓ ≖ ≗ ≜ ≡ ≤ ≥ ≦ ≧ ≫ ≬ ≳ ≷ ≺ ≻ ≼ ≽ ≾ ≿ ⊂ ⊃ ⊆ ⊇ ⊏ ⊐ ⊑ ⊒ ⊢ ⊣ ⊩ ⊪ ⊸ ⋈ ⋍ ⋐ ⋑ ⋔ ⋙ ⋛ ⋞ ⋟ ⌢ ⌣ ⩾ ⪆ ⪌ ⪕ ⪖ ⪯ ⪰ ⪷ ⪸ ⫅ ⫆ ≲ ⩽ ⪅ ≶ ⋚ ⪋ ⟂ ⊨$ `⊶ ⊷ ≔ ≕ ⩴`
 
 ### Negated Relations
 
@@ -559,10 +561,10 @@ Extensible arrows all can take an optional argument in the same manner<br>as `\x
 
 **Bra-ket Notation**
 
-|                           |                           |                                                                                                            |
-| :------------------------ | :------------------------ | :--------------------------------------------------------------------------------------------------------- |
-| $\bra{\phi}$ `\bra{\phi}` | $\ket{\psi}$ `\ket{\psi}` | $\braket{\phi\VERT\psi}$ <code>\braket{\phi&#124;\psi}</code>                                              |
-| $\Bra{\phi}$ `\Bra{\phi}` | $\Ket{\psi}$ `\Ket{\psi}` | $\Braket{ ϕ \VERT \frac{∂^2}{∂ t^2} \VERT ψ }$ <code>\Braket{ ϕ &#124; \frac{∂^2}{∂ t^2} &#124; ψ }</code> |
+|                           |                           |                                                                                                              |
+| :------------------------ | :------------------------ | :----------------------------------------------------------------------------------------------------------- |
+| $\bra{\phi}$ `\bra{\phi}` | $\ket{\psi}$ `\ket{\psi}` | `$\braket{\phi\VERT\psi}$` <code>\braket{\phi&#124;\psi}</code>                                              |
+| $\Bra{\phi}$ `\Bra{\phi}` | $\Ket{\psi}$ `\Ket{\psi}` | `$\Braket{ ϕ \VERT \frac{∂^2}{∂ t^2} \VERT ψ }$` <code>\Braket{ ϕ &#124; \frac{∂^2}{∂ t^2} &#124; ψ }</code> |
 
 ## Style, Color, Size, and Font
 
@@ -579,8 +581,8 @@ Note that `\color` acts like a switch. Other color functions expect the content 
 
 $\textcolor{blue}{F=ma}$ `\textcolor{blue}{F=ma}`<br>
 $\textcolor{#228B22}{F=ma}$ `\textcolor{#228B22}{F=ma}`<br>
-$\colorbox{aqua}{$F=ma$}$ `\colorbox{aqua}{$F=ma$}`<br>
-$\fcolorbox{red}{aqua}{$F=ma$}$ `\fcolorbox{red}{aqua}{$F=ma$}`
+`$\colorbox{aqua}{$F=ma$}$` `\colorbox{aqua}{$F=ma$}`<br>
+`$\fcolorbox{red}{aqua}{$F=ma$}$` `\fcolorbox{red}{aqua}{$F=ma$}`
 
 Note that, as in LaTeX, `\colorbox` & `\fcolorbox` renders its third argument as text, so you may want to switch back to math mode with `$` as in the examples above.
 
@@ -654,7 +656,7 @@ In cases where KaTeX fonts do not have a bold glyph, `\pmb` can simulate one. Fo
 | $\rq$ `\rq`                                             | $\triangle$ `\triangle`                       | $\sphericalangle$ `\sphericalangle`             |
 | $\text{\textquotedblleft}$ `\text{\textquotedblleft}`   | $\triangledown$ `\triangledown`               | $\top$ `\top`                                   |
 | $"$ `"`                                                 | $\triangleleft$ `\triangleleft`               | $\bot$ `\bot`                                   |
-| $\text{\textquotedblright}$ `\text{\textquotedblright}` | $\triangleright$ `\triangleright`             | $\$$ `\$`                                       |
+| $\text{\textquotedblright}$ `\text{\textquotedblright}` | $\triangleright$ `\triangleright`             | `$\$$` `\$`                                     |
 | $\colon$ `\colon`                                       | $\bigtriangledown$ `\bigtriangledown`         | $\text{\textdollar}$ `\text{\textdollar}`       |
 | $\backprime$ `\backprime`                               | $\bigtriangleup$ `\bigtriangleup`             | $\pounds$ `\pounds`                             |
 | $\prime$ `\prime`                                       | $\blacktriangle$ `\blacktriangle`             | $\mathsterling$ `\mathsterling`                 |
